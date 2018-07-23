@@ -18,6 +18,7 @@ import {
 import { CustomDateFormatter } from './custom-date-formatter.provider';
 import { colors } from '../calendar-utils/colors';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarService } from '../../services/calendar/calendar.service';
 
 @Component({
     selector: 'mwl-demo-component',
@@ -33,7 +34,29 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CalendarComponent {
 
     @ViewChild('modalContent') modalContent: TemplateRef<any>;
-    constructor(private modal: NgbModal) { }
+    eventsList: any;
+    events: any[] = [];
+    constructor(private calendarService: CalendarService, private modal: NgbModal) { }
+
+    ngOnInit() {
+        this.calendarService.getEvents().then((res: any) => {
+            this.eventsList = JSON.parse(res.d);
+            this.eventsList.forEach(event => {
+                console.log(event);
+                console.log(event.DateFrom.substring(6, 19));
+                this.events.push({
+                    start: new Date(event.DateFrom.substring(6, 19)),
+                    end: endOfDay(event.DateTo),
+                    title: event.Title,
+                    color: colors.red,
+                    description: event.CalendarEvent
+                })
+            });
+            console.log(this.events);
+        }).catch(err => {
+            console.log(err);
+        });;
+    }
 
     modalData: {
         event: CalendarEvent;
@@ -46,14 +69,15 @@ export class CalendarComponent {
 
     locale: string = 'es';
 
-    events: any[] = [
-        {
-            start: startOfDay(new Date()),
-            end: endOfDay(new Date()),
-            title: 'A day event',
-            color: colors.red,
-            description: "Test"
-        }];
+    // events = this.eventsList;
+    // events: any[] = [
+    //     {
+    //         start: startOfDay(new Date()),
+    //         end: endOfDay(new Date()),
+    //         title: 'A day event',
+    //         color: colors.red,
+    //         description: "Test"
+    //     }];
 
     activeDayIsOpen: boolean = true;
 
