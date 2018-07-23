@@ -18,6 +18,9 @@ import { DemoMaterialModule } from "./demo-material-module";
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
+import { CalendarModule } from 'angular-calendar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { LoginComponent } from "./login/login.component";
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
+    NgbModule.forRoot(),
+    CalendarModule.forRoot(),
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [
@@ -46,4 +51,4 @@ import { LoginComponent } from "./login/login.component";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
