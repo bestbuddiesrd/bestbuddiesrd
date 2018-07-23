@@ -1,3 +1,4 @@
+import { UserService } from "./../services/user/user.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
@@ -10,7 +11,10 @@ export class RegisterComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   applicationType: number = 1;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
@@ -18,15 +22,14 @@ export class RegisterComponent implements OnInit {
       lastName: ["", Validators.required],
       email: ["", Validators.required],
       city: ["", Validators.required],
-      dateOfBirth: ["", Validators.required],
+      dateOfBirth: [new Date("01-01-2000"), Validators.required],
       phone: ["", Validators.required],
       gender: ["", Validators.required],
       applicationType: ["", Validators.required],
-      associated: [""]
-
+      associated: [""],
+      pWD: ["123456"]
     });
     this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ["", Validators.required],
       buddy: ["", Validators.required],
       medicalIssue: ["", Validators.required],
       school: ["", Validators.required]
@@ -34,7 +37,6 @@ export class RegisterComponent implements OnInit {
   }
 
   toSecondStep() {
-
     this.applicationType = this.firstFormGroup.controls.applicationType.value;
     if (this.applicationType != 1) {
       this.firstFormGroup.controls.associated.setValue(false);
@@ -42,5 +44,22 @@ export class RegisterComponent implements OnInit {
       this.firstFormGroup.controls.associated.setValue(true);
     }
     console.log(this.firstFormGroup.value);
+  }
+
+  toThirdStep() {
+    let data = Object.assign(
+      {},
+      this.firstFormGroup.value,
+      this.secondFormGroup.value
+    );
+    console.log(data);
+    this.userService
+      .registerOneToOne(data)
+      .then(res => {
+        alert("Success");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
