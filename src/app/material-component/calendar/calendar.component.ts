@@ -45,8 +45,8 @@ export class CalendarComponent {
                 console.log(event);
                 console.log(event.DateFrom.substring(6, 19));
                 this.events.push({
-                    start: new Date(event.DateFrom.substring(6, 19)),
-                    end: endOfDay(event.DateTo),
+                    start: startOfDay(new Date(event.DateFrom.substring(6, 19))),
+                    end: endOfDay(new Date(event.DateTo.substring(6, 19))),
                     title: event.Title,
                     color: colors.red,
                     description: event.CalendarEvent
