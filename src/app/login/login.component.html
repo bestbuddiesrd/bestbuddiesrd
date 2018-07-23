@@ -1,3 +1,38 @@
-<p>
-  login works!
-</p>
+<!-- Desktop View -->
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0" fxHide.xs="true">
+  <div fxFlex="50%">
+    <img class="left-image" src="assets/images/girl.jpg" />
+  </div>
+  <div class="right-side" fxFlex="50%" fx. fxLayoutAlign="center center" fxLayout="column">
+    <img class="logo" src="assets/images/logo.png" />
+    <mat-form-field class="login-input" appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input matInput placeholder="test@gmail.com" [(ngModel)]="email">
+      <mat-icon matSuffix>supervised_user_circle</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="login-input" appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" [(ngModel)]="password">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+    <button mat-button class="login-btn" (click)="login()">Iniciar Sesión</button>
+  </div>
+</div>
+
+<!-- Mobile View -->
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0" fxShow="false" fxHide.xs="false">
+  <div class="right-side" fxFlex="100%" fx. fxLayoutAlign="center center" fxLayout="column">
+    <img class="mobile-logo" src="assets/images/logo.png" />
+    <mat-form-field class="mobile-login-input" appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input matInput placeholder="test@gmail.com" [(ngModel)]="email">
+      <mat-icon matSuffix>supervised_user_circle</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="mobile-login-input" appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" [(ngModel)]="password">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+    <button mat-button class="mobile-login-btn" (click)="login()">Iniciar Sesión</button>
+  </div>
+</div>
