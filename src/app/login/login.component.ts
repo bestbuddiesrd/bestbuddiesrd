@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     };
+    console.log(payload);
     this.userService
       .login(payload)
       .then(res => {
