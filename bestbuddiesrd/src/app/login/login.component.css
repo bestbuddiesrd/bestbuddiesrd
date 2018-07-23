@@ -1,0 +1,51 @@
+/* Desktop CSS */
+
+.container {
+    height: 100vh;
+}
+
+.left-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo {
+    width: 30%;
+    object-fit: contain;
+}
+
+.login-input {
+    width: 50%;
+}
+
+.login-btn {
+    width: 50%;
+    background: #f37842;
+    padding: 12px;
+    color: white;
+    border-radius: 12px;
+}
+
+.right-side {
+    background-color: white;
+}
+
+/* Mobile CSS */
+
+.mobile-logo {
+    width: 50%;
+    object-fit: contain;
+}
+
+.mobile-login-input {
+    width: 70%;
+}
+
+.mobile-login-btn {
+    width: 70%;
+    background: #f37842;
+    padding: 12px;
+    color: white;
+    border-radius: 12px;
+}
