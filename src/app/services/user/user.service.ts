@@ -24,4 +24,22 @@ export class UserService {
         );
     });
   }
+
+  registerOneToOne(data) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(
+          "http://bestbuddies.hajconsulting.net/Service/Service.asmx/RegisterOneToOne",
+          JSON.stringify(data)
+        )
+        .subscribe(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
 }
