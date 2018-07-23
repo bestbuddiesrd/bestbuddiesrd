@@ -1,26 +1,72 @@
-<div class="container" fxLayout="row" fxLayoutWrap="wrap">
-  <div fxFlex.gt-sm="100%" fxFlex="100">
-    <!-- <img class="logo" src="assets/images/logo.png" /> -->
+<div class="container" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+  <div fxFlex.gt-sm="50%" fxFlex="100%" fxLayout="column" fxLayoutAlign="center">
+    <img class="logo" src="assets/images/logo.png" />
+    <h2 class="title">Formulario de Inscripción</h2>
     <mat-card>
       <mat-card-content>
-        <mat-horizontal-stepper [linear]="false">
+        <mat-horizontal-stepper [linear]="true">
           <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>Datos Personales</ng-template>
+              <ng-template matStepLabel>Paso 1</ng-template>
               <mat-form-field>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <input matInput placeholder="Nombre" formControlName="name" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Apellido" formControlName="lastName" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" required>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Género" formControlName="gender">
+                  <mat-option value="1">Masculino</mat-option>
+                  <mat-option value="0">Femenino</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ciudad" formControlName="city" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input type="number" matInput placeholder="Celular" formControlName="phone" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Fecha de Nacimiento" [matDatepicker]="picker" (focus)="picker.open()" readonly formControlName="dateOfBirth"> </mat-form-field>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-form-field>
+                <mat-select placeholder="Tipo de Aplicación" formControlName="applicationType">
+                  <mat-option value="0">One To One</mat-option>
+                  <mat-option value="1">Asociado</mat-option>
+                  <mat-option value="2">Promoter</mat-option>
+                  <mat-option value="3">Staff</mat-option>
+                </mat-select>
               </mat-form-field>
               <div>
-                <button mat-raised-button color="warn" matStepperNext>Next</button>
+                <button mat-raised-button color="warn" matStepperNext (click)="toSecondStep()">Next</button>
               </div>
             </form>
           </mat-step>
           <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>Información de Contacto</ng-template>
-              <mat-form-field>
-                <input matInput placeholder="Address" formControlName="secondCtrl" required>
-              </mat-form-field>
+              <ng-template matStepLabel>Paso 2</ng-template>
+              <div *ngIf="applicationType == 0">
+                <mat-form-field>
+                  <mat-select placeholder="Colegio" formControlName="school">
+                    <mat-option value="0">Loyola</mat-option>
+                    <mat-option value="1">Mi Colegio</mat-option>
+                    <mat-option value="2">New Horizons</mat-option>
+                    <mat-option value="3">Saint Michael</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-select placeholder="¿Tienes alguna discapacidad?" formControlName="buddy">
+                    <mat-option value="true">Si</mat-option>
+                    <mat-option value="false">No</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <textarea matInput placeholder="¿Tiene algún problema médico del cuál debemos tener conocimiento?" formControlName="medicalIssue"></textarea>
+                </mat-form-field>
+              </div>
               <div>
                 <button mat-raised-button color="accent" matStepperPrevious>Back</button>
                 <button mat-raised-button color="warn" matStepperNext>Next</button>
@@ -28,8 +74,8 @@
             </form>
           </mat-step>
           <mat-step>
-            <ng-template matStepLabel>Otros</ng-template>
-            You are now done.
+            <ng-template matStepLabel>Paso 3</ng-template>
+            Listo se ha enviado su solicitud.
             <div>
               <button mat-raised-button color="accent" matStepperPrevious>Back</button>
             </div>

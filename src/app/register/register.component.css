@@ -7,13 +7,39 @@ mat-card-content {
     margin: 0 auto;
 }
 
+input {
+    color: rgb(56, 56, 56);
+}
+
+button {
+    margin-right: 12px;
+}
+
 .container {
-    height: 100vh;
+    height: 100%;
     padding: 16px;
     background: #f37842;
 }
 
 .logo {
-    width: 10%;
+    width: 15%;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+/* Using plain CSS */
+
+@media (max-width: 450px) {
+    .logo {
+        width: 30%;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
 }
