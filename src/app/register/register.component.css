@@ -1,0 +1,19 @@
+mat-card {
+    border-radius: 16px;
+    color: white;
+}
+
+mat-card-content {
+    margin: 0 auto;
+}
+
+.container {
+    height: 100vh;
+    padding: 16px;
+    background: #f37842;
+}
+
+.logo {
+    width: 10%;
+    object-fit: contain;
+}

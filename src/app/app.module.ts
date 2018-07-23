@@ -2,7 +2,7 @@ import * as $ from "jquery";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { AppRoutes } from "./app.routing";
@@ -18,6 +18,7 @@ import { DemoMaterialModule } from "./demo-material-module";
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
   declarations: [
@@ -26,13 +27,15 @@ import { LoginComponent } from "./login/login.component";
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
