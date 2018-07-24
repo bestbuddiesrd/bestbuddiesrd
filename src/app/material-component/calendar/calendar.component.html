@@ -10,17 +10,21 @@
     </div>
     <div class="modal-body">
         <div>
-            Fecha de Inicio :
+            <pre>{{ modalData?.event.description }}</pre>
+        </div>
+        <div>
+            <b>¿Dónde será?</b>
+            <pre>{{ modalData?.event.location }}</pre>
+        </div>
+        <div>
+            <b>Fecha de Inicio:</b>
             <pre>{{ modalData?.event.start | date: "medium"}}</pre>
         </div>
         <div>
-            Fecha de Fin :
+            <b>Fecha de Fin:</b>
             <pre>{{ modalData?.event.end | date: "medium"}}</pre>
         </div>
-        <div>
-            Descripción:
-            <pre>{{ modalData?.event.description }}</pre>
-        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
