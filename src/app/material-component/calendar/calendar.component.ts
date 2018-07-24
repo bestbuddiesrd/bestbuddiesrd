@@ -18,6 +18,7 @@ import {
 import { CustomDateFormatter } from './custom-date-formatter.provider';
 import { colors } from '../calendar-utils/colors';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
 import { CalendarService } from '../../services/calendar/calendar.service';
 
 @Component({
@@ -36,26 +37,30 @@ export class CalendarComponent {
     @ViewChild('modalContent') modalContent: TemplateRef<any>;
     eventsList: any;
     events: any[] = [];
-    constructor(private calendarService: CalendarService, private modal: NgbModal) { }
+    refresh: Subject<any> = new Subject();
+
+    constructor(private calendarService: CalendarService, private modal: NgbModal) {
+    }
 
     ngOnInit() {
         this.calendarService.getEvents().then((res: any) => {
             this.eventsList = JSON.parse(res.d);
             this.eventsList.forEach(event => {
                 console.log(event);
-                console.log(event.DateFrom.substring(6, 19));
                 this.events.push({
-                    start: startOfDay(new Date(event.DateFrom.substring(6, 19))),
-                    end: endOfDay(new Date(event.DateTo.substring(6, 19))),
+                    start: this.parseJsonDate(event.DateFrom),
+                    end: this.parseJsonDate(event.DateTo),
                     title: event.Title,
                     color: colors.red,
                     description: event.CalendarEvent
-                })
+                });
             });
+            this.refresh.next();
             console.log(this.events);
         }).catch(err => {
             console.log(err);
         });;
+
     }
 
     modalData: {
@@ -66,18 +71,7 @@ export class CalendarComponent {
 
     viewDate: Date = new Date();
 
-
     locale: string = 'es';
-
-    // events = this.eventsList;
-    // events: any[] = [
-    //     {
-    //         start: startOfDay(new Date()),
-    //         end: endOfDay(new Date()),
-    //         title: 'A day event',
-    //         color: colors.red,
-    //         description: "Test"
-    //     }];
 
     activeDayIsOpen: boolean = true;
 
@@ -98,6 +92,10 @@ export class CalendarComponent {
                 this.viewDate = date;
             }
         }
+    }
+
+    parseJsonDate(jsonDateString) {
+        return new Date(parseInt(jsonDateString.replace('/Date(', '')));
     }
 
     weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
