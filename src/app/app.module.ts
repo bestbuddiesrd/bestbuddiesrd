@@ -14,6 +14,7 @@ import { AppHeaderComponent } from "./layouts/full/header/header.component";
 import { AppSidebarComponent } from "./layouts/full/sidebar/sidebar.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DemoMaterialModule } from "./demo-material-module";
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
@@ -39,6 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
+    Ng2SmartTableModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     RouterModule.forRoot(AppRoutes)

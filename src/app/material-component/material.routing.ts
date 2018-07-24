@@ -17,11 +17,16 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { EventsTableComponent } from './events-table/events-tablecomponent';
 
 
 export const MaterialRoutes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent
+  },
+  {
+    path: 'events-table',
+    component: EventsTableComponent
   }
 ];
