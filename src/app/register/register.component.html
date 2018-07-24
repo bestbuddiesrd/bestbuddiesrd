@@ -4,9 +4,9 @@
     <h2 class="title">Formulario de Inscripción</h2>
     <mat-card>
       <mat-card-content>
-        <mat-horizontal-stepper [linear]="true">
-          <mat-step [stepControl]="firstFormGroup">
-            <form [formGroup]="firstFormGroup">
+        <mat-horizontal-stepper [linear]="false">
+          <mat-step [stepControl]="commonForm">
+            <form [formGroup]="commonForm">
               <ng-template matStepLabel>Paso 1</ng-template>
               <mat-form-field>
                 <input matInput placeholder="Nombre" formControlName="name" required>
@@ -41,35 +41,66 @@
                 </mat-select>
               </mat-form-field>
               <div>
-                <button mat-raised-button color="warn" matStepperNext (click)="toSecondStep()">Next</button>
+                <button class="next-btn" mat-raised-button matStepperNext (click)="toSecondStep()">Next</button>
               </div>
             </form>
           </mat-step>
-          <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
+          <mat-step [stepControl]="oneToOneForm" *ngIf="applicationType == 1 || applicationType == 0">
+            <form [formGroup]="oneToOneForm">
               <ng-template matStepLabel>Paso 2</ng-template>
-              <div *ngIf="applicationType == 0">
-                <mat-form-field>
-                  <mat-select placeholder="Colegio" formControlName="school">
-                    <mat-option value="0">Loyola</mat-option>
-                    <mat-option value="1">Mi Colegio</mat-option>
-                    <mat-option value="2">New Horizons</mat-option>
-                    <mat-option value="3">Saint Michael</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-select placeholder="¿Tienes alguna discapacidad?" formControlName="buddy">
-                    <mat-option value="true">Si</mat-option>
-                    <mat-option value="false">No</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                  <textarea matInput placeholder="¿Tiene algún problema médico del cuál debemos tener conocimiento?" formControlName="medicalIssue"></textarea>
-                </mat-form-field>
-              </div>
+              <mat-form-field>
+                <mat-select placeholder="Colegio" formControlName="school">
+                  <mat-option value="0">Loyola</mat-option>
+                  <mat-option value="1">Mi Colegio</mat-option>
+                  <mat-option value="2">New Horizons</mat-option>
+                  <mat-option value="3">Saint Michael</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="¿Tienes alguna discapacidad?" formControlName="buddy">
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput placeholder="¿Tiene algún problema médico del cuál debemos tener conocimiento?" formControlName="medicalIssue"></textarea>
+              </mat-form-field>
               <div>
                 <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-                <button mat-raised-button color="warn" matStepperNext (click)="toThirdStep()">Next</button>
+                <button class="next-btn" mat-raised-button matStepperNext (click)="toThirdStep()">Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="promoterForm" *ngIf="applicationType == 2">
+            <form [formGroup]="promoterForm">
+              <ng-template matStepLabel>Paso 2</ng-template>
+              <mat-form-field>
+                <mat-select placeholder="Universidad" formControlName="university">
+                  <mat-option *ngFor="let university of universities" value="{{university.id}}">{{university.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Carrera" formControlName="career">
+                  <mat-option *ngFor="let career of careers" value="{{career.id}}">{{career.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="¿Trabajas?" formControlName="isWorking">
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Comisión" formControlName="Comission">
+                  <mat-option *ngFor="let comission of comissions" value="{{comission.id}}">{{comission.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput placeholder="¿Tiene algún problema médico del cuál debemos tener conocimiento?" formControlName="medicalIssue"></textarea>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                <button class="next-btn" mat-raised-button matStepperNext (click)="toThirdStep()">Next</button>
               </div>
             </form>
           </mat-step>

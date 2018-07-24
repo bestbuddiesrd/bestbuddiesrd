@@ -5,6 +5,11 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class UserService {
+  options: HttpHeaders = new HttpHeaders().set(
+    "Content-type",
+    "application/json"
+  );
+  url: string = "http://bestbuddies.hajconsulting.net/Service/Service.asmx/";
   constructor(private http: HttpClient) {}
 
   login(credentials) {
@@ -26,16 +31,28 @@ export class UserService {
   }
 
   registerOneToOne(data) {
-    let options = new HttpHeaders().set("Content-type", "application/json");
     return new Promise((resolve, reject) => {
       this.http
-        .post(
-          "http://bestbuddies.hajconsulting.net/Service/Service.asmx/RegisterOneToOne",
-          JSON.stringify(data),
-          {
-            headers: options
+        .post(this.url + "RegisterOneToOne", JSON.stringify(data), {
+          headers: this.options
+        })
+        .subscribe(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
           }
-        )
+        );
+    });
+  }
+
+  registerPromoter(data) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(this.url + "RegisterPromoter", JSON.stringify(data), {
+          headers: this.options
+        })
         .subscribe(
           res => {
             resolve(res);

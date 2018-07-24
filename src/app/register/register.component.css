@@ -34,6 +34,11 @@ button {
     color: white;
 }
 
+.next-btn {
+    background: #f37842;
+    color: white;
+}
+
 /* Using plain CSS */
 
 @media (max-width: 450px) {
