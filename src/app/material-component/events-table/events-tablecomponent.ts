@@ -18,7 +18,7 @@ export class EventsTableComponent {
   constructor(private calendarService: CalendarService) { }
 
   ngOnInit() {
-    this.calendarService.getEvents("http://bestbuddies.hajconsulting.net/Service/Service.asmx/GetEvents")
+    this.calendarService.getEvents("http://bestbuddies.hajconsulting.net/Service/Service.asmx/GetExpiredEvents")
       .then((res: any) => {
         this.eventsList = JSON.parse(res.d);
         this.eventsList.forEach(event => {
