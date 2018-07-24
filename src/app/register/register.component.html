@@ -106,7 +106,17 @@
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Paso 3</ng-template>
-            Listo se ha enviado su solicitud.
+            <mat-form-field>
+              <mat-chip-list #chipList>
+                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable" (removed)="remove(fruit)">
+                  {{fruit.name}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Mis hobbies..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [dataSource]="hobbies"
+                  [dataSourceConfig]="{text: '_Activity', value: 'ID'}" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
+                />
+              </mat-chip-list>
+            </mat-form-field>
             <div>
               <button mat-raised-button color="accent" matStepperPrevious>Back</button>
             </div>

@@ -63,4 +63,38 @@ export class UserService {
         );
     });
   }
+
+  getHobbies() {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(this.url + "GetHobbies", {
+          headers: this.options
+        })
+        .subscribe(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
+
+  getSports() {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(this.url + "GetSports", {
+          headers: this.options
+        })
+        .subscribe(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
 }

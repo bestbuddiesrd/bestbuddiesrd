@@ -1,6 +1,8 @@
 import { UserService } from "./../services/user/user.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ENTER, COMMA } from '@angular/cdk/keycodes'
+import { MatChipInputEvent } from '@angular/material';
 
 @Component({
   selector: "app-register",
@@ -12,6 +14,8 @@ export class RegisterComponent implements OnInit {
   oneToOneForm: FormGroup;
   promoterForm: FormGroup;
   applicationType: number = 0;
+  sports: any;
+  hobbies: any;
   careers: any = [
     {
       id: 1,
@@ -106,10 +110,24 @@ export class RegisterComponent implements OnInit {
       name: "Relación con Padres e Instituciones"
     }
   ];
+  visible: boolean = true;
+  selectable: boolean = true;
+  removable: boolean = true;
+  addOnBlur: boolean = true;
+
+  // Enter, comma
+  separatorKeysCodes = [ENTER, COMMA];
+
+  fruits = [
+    { name: 'Lemon' },
+    { name: 'Lime' },
+    { name: 'Apple' },
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.commonForm = this.formBuilder.group({
@@ -135,6 +153,20 @@ export class RegisterComponent implements OnInit {
       medicalIssue: ["", Validators.required],
       isWorking: ["", Validators.required],
       Comission: ["", Validators.required]
+    });
+
+    this.userService.getHobbies().then((res: any) => {
+      this.hobbies = JSON.parse(res.d);
+      console.log(this.hobbies);
+    }).catch(err => {
+      console.log(err);
+    });
+
+    this.userService.getSports().then((res: any) => {
+      this.sports = JSON.parse(res.d);
+      console.log(this.sports);
+    }).catch(err => {
+      console.log(err);
     });
   }
 
@@ -176,6 +208,29 @@ export class RegisterComponent implements OnInit {
         .catch(err => {
           console.log(err);
         });
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    let input = event.input;
+    let value = event.value;
+
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.fruits.push({ name: value.trim() });
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(fruit: any): void {
+    let index = this.fruits.indexOf(fruit);
+
+    if (index >= 0) {
+      this.fruits.splice(index, 1);
     }
   }
 }
