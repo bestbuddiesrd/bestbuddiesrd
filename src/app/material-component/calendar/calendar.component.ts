@@ -51,6 +51,7 @@ export class CalendarComponent {
                     start: this.parseJsonDate(event.DateFrom),
                     end: this.parseJsonDate(event.DateTo),
                     title: event.Title,
+                    location: event.Location,
                     color: colors.red,
                     description: event.CalendarEvent
                 });

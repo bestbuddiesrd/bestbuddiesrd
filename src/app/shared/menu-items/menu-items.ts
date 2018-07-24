@@ -9,7 +9,7 @@ export interface Menu {
 
 const MENUITEMS = [
   { state: 'starter', name: 'Starter Page', type: 'link', icon: 'av_timer' },
-  { state: 'calendar', type: 'link', name: 'Calendar', icon: 'date_range' },
+  { state: 'calendar', type: 'link', name: 'Calendario de Eventos', icon: 'date_range' },
 
 ];
 
