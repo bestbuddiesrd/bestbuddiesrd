@@ -1,8 +1,8 @@
 import { UserService } from "./../services/user/user.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ENTER, COMMA } from '@angular/cdk/keycodes'
-import { MatChipInputEvent } from '@angular/material';
+import { ENTER, COMMA } from "@angular/cdk/keycodes";
+import { MatChipInputEvent } from "@angular/material";
 
 @Component({
   selector: "app-register",
@@ -12,10 +12,15 @@ import { MatChipInputEvent } from '@angular/material';
 export class RegisterComponent implements OnInit {
   commonForm: FormGroup;
   oneToOneForm: FormGroup;
+  activitiesForm: FormGroup;
   promoterForm: FormGroup;
   applicationType: number = 0;
   sports: any;
   hobbies: any;
+  chosenSports: any;
+  chosenHobbies: any;
+  mergedOneToOne: any;
+  mergedPromoter: any;
   careers: any = [
     {
       id: 1,
@@ -110,24 +115,11 @@ export class RegisterComponent implements OnInit {
       name: "Relación con Padres e Instituciones"
     }
   ];
-  visible: boolean = true;
-  selectable: boolean = true;
-  removable: boolean = true;
-  addOnBlur: boolean = true;
-
-  // Enter, comma
-  separatorKeysCodes = [ENTER, COMMA];
-
-  fruits = [
-    { name: 'Lemon' },
-    { name: 'Lime' },
-    { name: 'Apple' },
-  ];
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.commonForm = this.formBuilder.group({
@@ -155,19 +147,23 @@ export class RegisterComponent implements OnInit {
       Comission: ["", Validators.required]
     });
 
-    this.userService.getHobbies().then((res: any) => {
-      this.hobbies = JSON.parse(res.d);
-      console.log(this.hobbies);
-    }).catch(err => {
-      console.log(err);
-    });
+    this.userService
+      .getHobbies()
+      .then((res: any) => {
+        this.hobbies = JSON.parse(res.d);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-    this.userService.getSports().then((res: any) => {
-      this.sports = JSON.parse(res.d);
-      console.log(this.sports);
-    }).catch(err => {
-      console.log(err);
-    });
+    this.userService
+      .getSports()
+      .then((res: any) => {
+        this.sports = JSON.parse(res.d);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   toSecondStep() {
@@ -181,56 +177,52 @@ export class RegisterComponent implements OnInit {
 
   toThirdStep() {
     if (this.applicationType < 2) {
-      let data = Object.assign(
+      this.mergedOneToOne = Object.assign(
         {},
         this.commonForm.value,
         this.oneToOneForm.value
       );
+    } else if (this.applicationType == 2) {
+      this.mergedPromoter = Object.assign(
+        {},
+        this.commonForm.value,
+        this.promoterForm.value
+      );
+    }
+  }
+
+  completeForm() {
+    if (this.applicationType < 2) {
       this.userService
-        .registerOneToOne(data)
-        .then(res => {
-          alert("Success");
+        .registerOneToOne(this.mergedOneToOne)
+        .then((res: any) => {
+          if (res) {
+            let data = {
+              oneToOne: res.d,
+              activities: this.hobbies.concat(this.sports)
+            };
+            this.userService
+              .setActivities(data)
+              .then((success: any) => {
+                console.log(success);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          }
         })
         .catch(err => {
           console.log(err);
         });
     } else if (this.applicationType == 2) {
-      let data = Object.assign(
-        {},
-        this.commonForm.value,
-        this.promoterForm.value
-      );
       this.userService
-        .registerPromoter(data)
+        .registerPromoter(this.mergedPromoter)
         .then(res => {
           alert("Success");
         })
         .catch(err => {
           console.log(err);
         });
-    }
-  }
-
-  add(event: MatChipInputEvent): void {
-    let input = event.input;
-    let value = event.value;
-
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.fruits.push({ name: value.trim() });
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
-
-  remove(fruit: any): void {
-    let index = this.fruits.indexOf(fruit);
-
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
     }
   }
 }

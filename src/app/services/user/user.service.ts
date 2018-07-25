@@ -47,6 +47,24 @@ export class UserService {
     });
   }
 
+  // Hobbies y Deportes
+  setActivities(data) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(this.url + "SetOneToOneActivity", JSON.stringify(data), {
+          headers: this.options
+        })
+        .subscribe(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
+
   registerPromoter(data) {
     return new Promise((resolve, reject) => {
       this.http

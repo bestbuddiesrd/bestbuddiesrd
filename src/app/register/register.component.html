@@ -1,5 +1,5 @@
 <div class="container" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
-  <div fxFlex.gt-sm="50%" fxFlex="100%" fxLayout="column" fxLayoutAlign="center">
+  <div fxFlex.gt-sm="50%" fxFlex="100%" fxLayout="column">
     <img class="logo" src="assets/images/logo.png" />
     <h2 class="title">Formulario de Inscripción</h2>
     <mat-card>
@@ -105,21 +105,22 @@
             </form>
           </mat-step>
           <mat-step>
-            <ng-template matStepLabel>Paso 3</ng-template>
-            <mat-form-field>
-              <mat-chip-list #chipList>
-                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable" (removed)="remove(fruit)">
-                  {{fruit.name}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-                <input placeholder="Mis hobbies..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [dataSource]="hobbies"
-                  [dataSourceConfig]="{text: '_Activity', value: 'ID'}" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
-                />
-              </mat-chip-list>
-            </mat-form-field>
-            <div>
-              <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-            </div>
+            <form>
+              <ng-template matStepLabel>Paso 3</ng-template>
+              <mat-form-field>
+                <mat-select name="hobbies" placeholder="Hobbies" [(ngModel)]="chosenHobbies" multiple>
+                  <mat-option *ngFor="let hobby of hobbies" [value]="hobby.ID">{{hobby._Activity}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select name="sports" placeholder="Deportes" [(ngModel)]="chosenSports" multiple>
+                  <mat-option *ngFor="let sport of sports" [value]="sport.ID">{{sport._Activity}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="accent" (click)="completeForm()">Enviar</button>
+              </div>
+            </form>
           </mat-step>
         </mat-horizontal-stepper>
       </mat-card-content>
