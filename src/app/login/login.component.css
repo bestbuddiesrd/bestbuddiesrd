@@ -1,8 +1,22 @@
-/* Desktop CSS */
+/* Common CSS */
 
 .container {
     height: 100vh;
 }
+
+.right-side {
+    background-color: white;
+}
+
+a {
+    margin: 16px;
+}
+
+a:hover {
+    color: #f37842;
+}
+
+/* Desktop CSS */
 
 .left-image {
     width: 100%;
@@ -25,10 +39,6 @@
     padding: 12px;
     color: white;
     border-radius: 12px;
-}
-
-.right-side {
-    background-color: white;
 }
 
 /* Mobile CSS */
