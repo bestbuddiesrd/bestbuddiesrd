@@ -14,11 +14,12 @@ import { AppHeaderComponent } from "./layouts/full/header/header.component";
 import { AppSidebarComponent } from "./layouts/full/sidebar/sidebar.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DemoMaterialModule } from "./demo-material-module";
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
-import { AtividadesComponent } from './atividades/atividades.component';
+import { ActividadesComponent } from './actividades/actividades.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AtividadesComponent } from './atividades/atividades.component';
     SpinnerComponent,
     AppSidebarComponent,
     LoginComponent,
-    AtividadesComponent
+    ActividadesComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,9 @@ import { AtividadesComponent } from './atividades/atividades.component';
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [
@@ -48,4 +52,4 @@ import { AtividadesComponent } from './atividades/atividades.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

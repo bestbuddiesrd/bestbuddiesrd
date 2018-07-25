@@ -2,15 +2,15 @@ import { Routes } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { LoginComponent } from './login/login.component';
-import { AtividadesComponent } from './atividades/atividades.component';
+import { ActividadesComponent } from './actividades/actividades.component';
 
 export const AppRoutes: Routes = [{
   path: 'dashboard',
   component: FullComponent,
-  children: [{ 
-    path: 'dashboard', 
-    redirectTo: '/starter', 
-    pathMatch: 'full' 
+  children: [{
+    path: 'dashboard',
+    redirectTo: '/starter',
+    pathMatch: 'full'
   }, {
     path: '',
     loadChildren: './material-component/material.module#MaterialComponentsModule'
@@ -22,7 +22,8 @@ export const AppRoutes: Routes = [{
   path: '',
   component: LoginComponent,
 }, {
-  path: 'actividades', 
-  component: AtividadesComponent}
+  path: 'actividades',
+  component: ActividadesComponent
+}
 ];
 
