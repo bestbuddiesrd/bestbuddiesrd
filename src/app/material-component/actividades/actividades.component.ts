@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarService } from '../services/calendar/calendar.service';
+import { CalendarService } from '../../services/calendar/calendar.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -34,7 +34,7 @@ export class ActividadesComponent implements OnInit {
         statusId: true
       }
       this.calendarService.postEvents(event).then(res => {
-        // this.router.navigate(["/dashboard/calendario"]);
+        this.router.navigate(["/dashboard/calendar"]);
       })
         .catch(err => {
           console.log(err);

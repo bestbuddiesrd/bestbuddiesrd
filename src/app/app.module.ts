@@ -19,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
-import { ActividadesComponent } from './actividades/actividades.component';
 
 import { CalendarModule } from 'angular-calendar';
 
@@ -31,8 +30,7 @@ import { CalendarModule } from 'angular-calendar';
         AppHeaderComponent,
         SpinnerComponent,
         AppSidebarComponent,
-        LoginComponent,
-        ActividadesComponent
+        LoginComponent
     ],
     imports: [
         BrowserModule,

@@ -29,12 +29,14 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { CalendarModule } from 'angular-calendar';
 import { CalendarUtilsModule } from './calendar-utils/module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActividadesComponent } from './actividades/actividades.component';
 
 registerLocaleData(localeEs);
 
@@ -46,6 +48,8 @@ registerLocaleData(localeEs);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     FlexLayoutModule,
     CdkTableModule,
     CalendarUtilsModule,
@@ -59,6 +63,7 @@ registerLocaleData(localeEs);
     DialogOverviewExampleDialog
   ],
   declarations: [
+    ActividadesComponent,
     ButtonsComponent,
     GridComponent,
     ListsComponent,
