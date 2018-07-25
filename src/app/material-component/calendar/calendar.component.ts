@@ -15,7 +15,6 @@ import {
     startOfDay,
     endOfDay
 } from 'date-fns';
-import { Router } from "@angular/router";
 import { CustomDateFormatter } from './custom-date-formatter.provider';
 import { colors } from '../calendar-utils/colors';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -40,7 +39,7 @@ export class CalendarComponent {
     events: any[] = [];
     refresh: Subject<any> = new Subject();
 
-    constructor(private calendarService: CalendarService, private modal: NgbModal, public router: Router) {
+    constructor(private calendarService: CalendarService, private modal: NgbModal) {
     }
 
     ngOnInit() {
@@ -99,9 +98,6 @@ export class CalendarComponent {
 
     parseJsonDate(jsonDateString) {
         return new Date(parseInt(jsonDateString.replace('/Date(', '')));
-    }
-    goToEventsTable() {
-        this.router.navigate(["/dashboard/events-table"]);
     }
     weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
 

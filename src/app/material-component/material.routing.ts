@@ -18,6 +18,8 @@ import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { EventsTableComponent } from './events-table/events-tablecomponent';
+import { ActividadesComponent } from './actividades/actividades.component';
+
 
 
 export const MaterialRoutes: Routes = [
@@ -28,5 +30,9 @@ export const MaterialRoutes: Routes = [
   {
     path: 'events-table',
     component: EventsTableComponent
+  },
+  {
+    path: 'actividades',
+    component: ActividadesComponent
   }
 ];

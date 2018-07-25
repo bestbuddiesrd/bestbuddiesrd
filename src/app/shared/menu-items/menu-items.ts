@@ -10,7 +10,8 @@ export interface Menu {
 const MENUITEMS = [
   { state: 'starter', name: 'Starter Page', type: 'link', icon: 'av_timer' },
   { state: 'calendar', type: 'link', name: 'Calendario de Eventos', icon: 'date_range' },
-  { state: 'events-table', type: 'link', name: 'Lista de Eventos', icon: 'date_range' }
+  { state: 'events-table', type: 'link', name: 'Lista de Eventos', icon: 'date_range' },
+  { state: 'actividades', type: 'link', name: 'Crear Evento', icon: 'event' }
 
 
 ];

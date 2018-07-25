@@ -16,11 +16,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DemoMaterialModule } from "./demo-material-module";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
-import { CalendarModule } from 'angular-calendar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { CalendarModule } from 'angular-calendar';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,
-    Ng2SmartTableModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     RouterModule.forRoot(AppRoutes)

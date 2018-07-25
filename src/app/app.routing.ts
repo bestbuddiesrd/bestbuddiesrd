@@ -6,19 +6,20 @@ import { LoginComponent } from './login/login.component';
 export const AppRoutes: Routes = [{
   path: 'dashboard',
   component: FullComponent,
-  children: [{ 
-    path: 'dashboard', 
-    redirectTo: '/starter', 
-    pathMatch: 'full' 
+  children: [{
+    path: 'dashboard',
+    redirectTo: 'starter',
+    pathMatch: 'full'
   }, {
     path: '',
     loadChildren: './material-component/material.module#MaterialComponentsModule'
   }, {
-    path: 'starter',
+    path: '',
     loadChildren: './starter/starter.module#StarterModule'
   }]
 }, {
   path: '',
   component: LoginComponent,
-}];
+}
+];
 
