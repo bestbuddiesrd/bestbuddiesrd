@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
-import { DemoMaterialModule} from '../demo-material-module';
+import { DemoMaterialModule } from '../demo-material-module';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,15 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { CalendarModule } from 'angular-calendar';
+import { CalendarUtilsModule } from './calendar-utils/module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   imports: [
@@ -38,7 +47,10 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CdkTableModule
+    CdkTableModule,
+    CalendarUtilsModule,
+    NgbModule,
+    CalendarModule.forRoot(),
   ],
   providers: [
 
@@ -63,8 +75,9 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
     TooltipComponent,
     SnackbarComponent,
     SliderComponent,
-    SlideToggleComponent
+    SlideToggleComponent,
+    CalendarComponent
   ]
 })
 
-export class MaterialComponentsModule {}
+export class MaterialComponentsModule { }

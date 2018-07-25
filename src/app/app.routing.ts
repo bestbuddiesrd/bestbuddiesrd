@@ -20,7 +20,7 @@ export const AppRoutes: Routes = [
           "./material-component/material.module#MaterialComponentsModule"
       },
       {
-        path: "starter",
+        path: "",
         loadChildren: "./starter/starter.module#StarterModule"
       }
     ]
