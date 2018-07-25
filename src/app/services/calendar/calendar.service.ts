@@ -27,4 +27,21 @@ export class CalendarService {
 
         });
     }
+
+    getEvents() {
+        let options = new HttpHeaders().set('Content-type', 'application/json');
+        return new Promise((resolve, reject) => {
+            this.http.get(
+                "http://bestbuddies.hajconsulting.net/Service/Service.asmx/GetEvents", { headers: options }
+            )
+                .subscribe(
+                    res => {
+                        resolve(res);
+                    },
+                    err => {
+                        reject(err);
+                    });
+
+        });
+    }
 }

@@ -57,7 +57,11 @@ mat-sidenav {
             }
         }
         &.selected > .mat-list-item-content > a{
+<<<<<<< HEAD
             background: $themecolor-alt;
+=======
+            background: #9396cb;
+>>>>>>> master
             border-radius: $radius;
             color:$white;
             

@@ -21,35 +21,39 @@ import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
 import { ActividadesComponent } from './actividades/actividades.component';
 
+import { CalendarModule } from 'angular-calendar';
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    FullComponent,
-    AppHeaderComponent,
-    SpinnerComponent,
-    AppSidebarComponent,
-    LoginComponent,
-    ActividadesComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    DemoMaterialModule,
-    FormsModule,
-    FlexLayoutModule,
-    HttpClientModule,
-    SharedModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
-    NgbModule.forRoot(),
-    RouterModule.forRoot(AppRoutes)
-  ],
-  providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        FullComponent,
+        AppHeaderComponent,
+        SpinnerComponent,
+        AppSidebarComponent,
+        LoginComponent,
+        ActividadesComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        DemoMaterialModule,
+        FormsModule,
+        FlexLayoutModule,
+        HttpClientModule,
+        SharedModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
+        NgbModule.forRoot(),
+        CalendarModule.forRoot(),
+        RouterModule.forRoot(AppRoutes)
+    ],
+    providers: [
+        {
+            provide: LocationStrategy,
+            useClass: HashLocationStrategy
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

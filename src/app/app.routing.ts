@@ -9,13 +9,13 @@ export const AppRoutes: Routes = [{
   component: FullComponent,
   children: [{
     path: 'dashboard',
-    redirectTo: '/starter',
+    redirectTo: 'starter',
     pathMatch: 'full'
   }, {
     path: '',
     loadChildren: './material-component/material.module#MaterialComponentsModule'
   }, {
-    path: 'starter',
+    path: '',
     loadChildren: './starter/starter.module#StarterModule'
   }]
 }, {
