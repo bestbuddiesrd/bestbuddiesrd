@@ -1,0 +1,83 @@
+<!-- Desktop View -->
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0" fxHide.xs="true">
+  <div class="right-side" fxFlex="100%" fx. fxLayoutAlign="center center" fxLayout="column">
+    <img class="logo" src="assets/images/logo.png" />
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="text-input" appearance="outline">
+            <mat-label>Actividad</mat-label>
+            <input matInput placeholder="actividad" [(ngModel)]="actividad" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="text-input" appearance="outline">
+            <mat-label>Lugar</mat-label>
+            <input matInput placeholder="lugar" [(ngModel)]="lugar" required>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="text-input" appearance="outline">
+            <mat-label>Fecha Desde</mat-label>
+            <input matInput required [owlDateTimeTrigger]="dt12" [owlDateTime]="dt12" [(ngModel)]="selectedMoments" [selectMode]="'rangeFrom'">
+            <owl-date-time #dt12></owl-date-time>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="text-input" appearance="outline">
+            <mat-label>Fecha Hasta</mat-label>
+            <input matInput required [owlDateTimeTrigger]="dt13" [owlDateTime]="dt13" [(ngModel)]="selectedMoments" [selectMode]="'rangeTo'">
+            <owl-date-time #dt13></owl-date-time>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <mat-form-field class="text-input" appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput required placeholder="Textarea" [(ngModel)]="descripcion"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button mat-button class="act-btn" (click)="crearActividad()">Crear Actividad</button>
+  </div>
+</div>
+
+<!-- Mobile View -->
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0" fxShow="false" fxHide.xs="false">
+  <div class="right-side" fxFlex="100%" fx. fxLayoutAlign="center center" fxLayout="column">
+    <img class="mobile-logo" src="assets/images/logo.png" />
+    <mat-form-field class="mobile-text-input" appearance="outline">
+      <mat-label>Actividad</mat-label>
+      <input matInput placeholder="actividad" [(ngModel)]="actividad">
+    </mat-form-field>
+    <mat-form-field class="mobile-text-input" appearance="outline">
+      <mat-label>Lugar</mat-label>
+      <input matInput placeholder="lugar" [(ngModel)]="lugar">
+    </mat-form-field>
+    <mat-form-field class="mobile-text-input" appearance="outline">
+      <mat-label>Fecha Desde</mat-label>
+      <input matInput [matDatepicker]="FechaDesdeM">
+      <mat-datepicker-toggle matSuffix [for]="FechaDesdeM"></mat-datepicker-toggle>
+      <mat-datepicker #FechaDesdeM></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="mobile-text-input" appearance="outline">
+      <mat-label>Fecha Hasta</mat-label>
+      <input matInput [matDatepicker]="FechaHastaM">
+      <mat-datepicker-toggle matSuffix [for]="FechaHastaM"></mat-datepicker-toggle>
+      <mat-datepicker #FechaHastaM></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="mobile-text-input" appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <input matInput placeholder="descripcion" [(ngModel)]="descripcion">
+    </mat-form-field>
+    <mat-form-field class="mobile-text-input" appearance="outline">
+      <mat-label>Cantidad de Participantes</mat-label>
+      <input matInput placeholder="Cantidad de Participantes" [(ngModel)]="cantparticipantes">
+    </mat-form-field>
+    <button mat-button class="mobile-act-btn">Crear Actividad</button>
+  </div>
+</div>

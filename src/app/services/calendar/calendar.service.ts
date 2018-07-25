@@ -9,6 +9,25 @@ export class CalendarService {
 
     constructor(private http: HttpClient) { }
 
+    postEvents(event) {
+        let options = new HttpHeaders().set('Content-type', 'application/json');
+        return new Promise((resolve, reject) => {
+            this.http.post(
+                "http://bestbuddies.hajconsulting.net/Service/Service.asmx/SetEvent",
+                JSON.stringify(event),
+                { headers: options }
+            )
+                .subscribe(
+                    res => {
+                        resolve(res);
+                    },
+                    err => {
+                        reject(err);
+                    });
+
+        });
+    }
+
     getEvents() {
         let options = new HttpHeaders().set('Content-type', 'application/json');
         return new Promise((resolve, reject) => {
