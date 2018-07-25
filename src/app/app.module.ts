@@ -43,6 +43,7 @@ import { CalendarModule } from 'angular-calendar';
     SharedModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     RouterModule.forRoot(AppRoutes)
