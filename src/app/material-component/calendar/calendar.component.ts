@@ -43,24 +43,25 @@ export class CalendarComponent {
     }
 
     ngOnInit() {
-        this.calendarService.getEvents().then((res: any) => {
-            this.eventsList = JSON.parse(res.d);
-            this.eventsList.forEach(event => {
-                console.log(event);
-                this.events.push({
-                    start: this.parseJsonDate(event.DateFrom),
-                    end: this.parseJsonDate(event.DateTo),
-                    title: event.Title,
-                    location: event.Location,
-                    color: colors.red,
-                    description: event.CalendarEvent
+        this.calendarService.getEvents("http://bestbuddies.hajconsulting.net/Service/Service.asmx/GetEvents")
+            .then((res: any) => {
+                this.eventsList = JSON.parse(res.d);
+                this.eventsList.forEach(event => {
+                    console.log(event);
+                    this.events.push({
+                        start: this.parseJsonDate(event.DateFrom),
+                        end: this.parseJsonDate(event.DateTo),
+                        title: event.Title,
+                        location: event.Location,
+                        color: colors.red,
+                        description: event.CalendarEvent
+                    });
                 });
-            });
-            this.refresh.next();
-            console.log(this.events);
-        }).catch(err => {
-            console.log(err);
-        });;
+                this.refresh.next();
+                console.log(this.events);
+            }).catch(err => {
+                console.log(err);
+            });;
 
     }
 
@@ -98,7 +99,6 @@ export class CalendarComponent {
     parseJsonDate(jsonDateString) {
         return new Date(parseInt(jsonDateString.replace('/Date(', '')));
     }
-
     weekStartsOn: number = DAYS_OF_WEEK.MONDAY;
 
     weekendDays: number[] = [DAYS_OF_WEEK.SATURDAY, DAYS_OF_WEEK.SUNDAY];

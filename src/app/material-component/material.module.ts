@@ -29,6 +29,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { registerLocaleData } from '@angular/common';
@@ -36,6 +37,7 @@ import localeEs from '@angular/common/locales/es';
 import { CalendarModule } from 'angular-calendar';
 import { CalendarUtilsModule } from './calendar-utils/module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventsTableComponent } from './events-table/events-tablecomponent';
 import { ActividadesComponent } from './actividades/actividades.component';
 
 registerLocaleData(localeEs);
@@ -54,6 +56,7 @@ registerLocaleData(localeEs);
     CdkTableModule,
     CalendarUtilsModule,
     NgbModule,
+    Ng2SmartTableModule,
     CalendarModule.forRoot(),
   ],
   providers: [
@@ -81,7 +84,8 @@ registerLocaleData(localeEs);
     SnackbarComponent,
     SliderComponent,
     SlideToggleComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventsTableComponent
   ]
 })
 

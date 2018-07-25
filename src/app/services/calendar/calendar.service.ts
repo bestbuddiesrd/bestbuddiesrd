@@ -28,11 +28,10 @@ export class CalendarService {
         });
     }
 
-    getEvents() {
+    getEvents(url) {
         let options = new HttpHeaders().set('Content-type', 'application/json');
         return new Promise((resolve, reject) => {
-            this.http.get(
-                "http://bestbuddies.hajconsulting.net/Service/Service.asmx/GetEvents", { headers: options }
+            this.http.get(url, { headers: options }
             )
                 .subscribe(
                     res => {
