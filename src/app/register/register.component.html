@@ -1,0 +1,130 @@
+<div class="container" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+  <div fxFlex.gt-sm="50%" fxFlex="100%" fxLayout="column">
+    <img class="logo" src="assets/images/logo.png" />
+    <h2 class="title">Formulario de Inscripción</h2>
+    <mat-card>
+      <mat-card-content>
+        <mat-horizontal-stepper [linear]="true">
+          <mat-step [stepControl]="commonForm">
+            <form [formGroup]="commonForm">
+              <ng-template matStepLabel>Paso 1</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Nombre" formControlName="name" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Apellido" formControlName="lastName" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" required>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Género" formControlName="gender">
+                  <mat-option value="1">Masculino</mat-option>
+                  <mat-option value="0">Femenino</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Ciudad" formControlName="city" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input type="number" matInput placeholder="Celular" formControlName="phone" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Fecha de Nacimiento" [matDatepicker]="picker" (focus)="picker.open()" readonly formControlName="dateOfBirth"> </mat-form-field>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-form-field>
+                <mat-select placeholder="Tipo de Aplicación" formControlName="applicationType">
+                  <mat-option value="0">One To One</mat-option>
+                  <mat-option value="1">Asociado</mat-option>
+                  <mat-option value="2">Promoter</mat-option>
+                  <mat-option value="3">Staff</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <button class="next-btn" mat-raised-button matStepperNext (click)="toSecondStep()">Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="oneToOneForm" *ngIf="applicationType == 1 || applicationType == 0">
+            <form [formGroup]="oneToOneForm">
+              <ng-template matStepLabel>Paso 2</ng-template>
+              <mat-form-field>
+                <mat-select placeholder="Colegio" formControlName="school">
+                  <mat-option value="0">Loyola</mat-option>
+                  <mat-option value="1">Mi Colegio</mat-option>
+                  <mat-option value="2">New Horizons</mat-option>
+                  <mat-option value="3">Saint Michael</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="¿Tienes alguna discapacidad?" formControlName="buddy">
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput placeholder="¿Tiene algún problema médico del cuál debemos tener conocimiento?" formControlName="medicalIssue"></textarea>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                <button class="next-btn" mat-raised-button matStepperNext (click)="toThirdStep()">Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="promoterForm" *ngIf="applicationType == 2">
+            <form [formGroup]="promoterForm">
+              <ng-template matStepLabel>Paso 2</ng-template>
+              <mat-form-field>
+                <mat-select placeholder="Universidad" formControlName="university">
+                  <mat-option *ngFor="let university of universities" value="{{university.id}}">{{university.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Carrera" formControlName="career">
+                  <mat-option *ngFor="let career of careers" value="{{career.id}}">{{career.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="¿Trabajas?" formControlName="isWorking">
+                  <mat-option value="true">Si</mat-option>
+                  <mat-option value="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Comisión" formControlName="Comission">
+                  <mat-option *ngFor="let comission of comissions" value="{{comission.id}}">{{comission.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <textarea matInput placeholder="¿Tiene algún problema médico del cuál debemos tener conocimiento?" formControlName="medicalIssue"></textarea>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                <button *ngIf="applicationType == 1 || applicationType == 0" class="next-btn" mat-raised-button matStepperNext (click)="toThirdStep()">Next</button>
+                <button *ngIf="applicationType == 2" mat-raised-button class="next-btn" (click)="completeForm()">Enviar</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step *ngIf="applicationType == 1 || applicationType == 0">
+            <form>
+              <ng-template matStepLabel>Paso 3</ng-template>
+              <mat-form-field>
+                <mat-select name="hobbies" placeholder="Hobbies" [(ngModel)]="chosenHobbies" multiple>
+                  <mat-option *ngFor="let hobby of hobbies" [value]="hobby.ID">{{hobby._Activity}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select name="sports" placeholder="Deportes" [(ngModel)]="chosenSports" multiple>
+                  <mat-option *ngFor="let sport of sports" [value]="sport.ID">{{sport._Activity}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="accent" (click)="completeForm()">Enviar</button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import * as $ from "jquery";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { AppRoutes } from "./app.routing";
@@ -19,39 +19,41 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
 import { LoginComponent } from "./login/login.component";
-
+import { RegisterComponent } from "./register/register.component";
 import { CalendarModule } from 'angular-calendar';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        FullComponent,
-        AppHeaderComponent,
-        SpinnerComponent,
-        AppSidebarComponent,
-        LoginComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        DemoMaterialModule,
-        FormsModule,
-        FlexLayoutModule,
-        HttpClientModule,
-        SharedModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
-        NgbModule.forRoot(),
-        CalendarModule.forRoot(),
-        RouterModule.forRoot(AppRoutes)
-    ],
-    providers: [
-        {
-            provide: LocationStrategy,
-            useClass: HashLocationStrategy
-        }
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    FullComponent,
+    AppHeaderComponent,
+    SpinnerComponent,
+    AppSidebarComponent,
+    LoginComponent,
+    RegisterComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule,
+    FormsModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    SharedModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
+    CalendarModule.forRoot(),
+    RouterModule.forRoot(AppRoutes)
+  ],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

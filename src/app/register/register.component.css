@@ -1,0 +1,56 @@
+mat-card {
+    border-radius: 16px;
+    color: white;
+    background-color: rgb(252, 222, 188);
+}
+
+mat-card-content {
+    margin: 0 auto;
+}
+
+mat-horizontal-stepper {
+    background-color: rgb(252, 222, 188);
+}
+
+input,
+textarea {
+    color: rgb(56, 56, 56);
+}
+
+button {
+    margin-right: 12px;
+}
+
+.container {
+    height: 100%;
+    padding: 16px;
+    background: #fff;
+}
+
+.logo {
+    width: 15%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    color: #f37842;
+}
+
+.next-btn {
+    background: #f37842;
+    color: white;
+}
+
+/* Using plain CSS */
+
+@media (max-width: 450px) {
+    .logo {
+        width: 30%;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+}
