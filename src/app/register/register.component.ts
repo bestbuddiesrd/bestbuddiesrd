@@ -119,7 +119,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.commonForm = this.formBuilder.group({
@@ -199,8 +199,9 @@ export class RegisterComponent implements OnInit {
           if (res) {
             let data = {
               oneToOne: res.d,
-              activities: this.hobbies.concat(this.sports)
+              activites: this.chosenHobbies.concat(this.chosenSports)
             };
+            console.log(data);
             this.userService
               .setActivities(data)
               .then((success: any) => {
