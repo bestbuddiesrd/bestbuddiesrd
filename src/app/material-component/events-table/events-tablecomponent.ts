@@ -6,7 +6,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'advanced-example-server',
   template: `
-    <ng2-smart-table [settings]="settings" [source]="eventos" (custom)="route($event)" ></ng2-smart-table>
+    <ng2-smart-table [settings]="settings" [source]="eventos" (custom)="goToReport($event)" ></ng2-smart-table>
   `
 })
 export class EventsTableComponent {
@@ -64,7 +64,7 @@ export class EventsTableComponent {
     }
   };
 
-  route(info) {
+  goToReport(info) {
     console.log(info.data.id);
   }
 

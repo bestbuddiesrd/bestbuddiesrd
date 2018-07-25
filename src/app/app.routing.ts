@@ -1,8 +1,8 @@
 import { RegisterComponent } from "./register/register.component";
-import { Routes } from "@angular/router";
-
 import { FullComponent } from "./layouts/full/full.component";
 import { LoginComponent } from "./login/login.component";
+import { Routes } from '@angular/router';
+import { LandingComponent } from "./landing/landing.component";
 
 export const AppRoutes: Routes = [
   {
@@ -26,11 +26,14 @@ export const AppRoutes: Routes = [
     ]
   },
   {
-    path: "",
-    component: LoginComponent
+    path: "register",
+    component: RegisterComponent},
+    {
+      path:"",
+    component: LandingComponent
   },
   {
-    path: "register",
-    component: RegisterComponent
+    path: "login",
+    component: LoginComponent
   }
 ];
