@@ -10,15 +10,14 @@ export class UserService {
     "application/json"
   );
   url: string = "http://bestbuddies.hajconsulting.net/Service/Service.asmx/";
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  login(credentials) {
+  login(data) {
     return new Promise((resolve, reject) => {
       this.http
-        .post(
-          "http://api.bestbuddiesrd.ml/v1/authentication/login",
-          JSON.stringify(credentials)
-        )
+        .post(this.url + "LoginUser", JSON.stringify(data), {
+          headers: this.options
+        })
         .subscribe(
           res => {
             resolve(res);
