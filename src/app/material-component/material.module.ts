@@ -64,6 +64,7 @@ registerLocaleData(localeEs);
 
   ],
   entryComponents: [
+    DialogOverviewExampleDialog,
     ReportsComponent
   ],
   declarations: [
