@@ -10,14 +10,14 @@ import { Component, OnInit } from "@angular/core";
 export class LoginComponent implements OnInit {
   email: any = "";
   password: any = "";
-  constructor(private userService: UserService, public router: Router) {}
+  constructor(private userService: UserService, public router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   login() {
     let payload: any = {
       email: this.email,
-      password: this.password
+      pWD: this.password
     };
     console.log(payload);
     this.userService
