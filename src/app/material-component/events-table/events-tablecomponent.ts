@@ -47,6 +47,7 @@ export class EventsTableComponent {
 
   settings = {
     actions: {
+      columnTitle: '',
       edit: false,
       delete: false,
       add: false,
@@ -57,6 +58,7 @@ export class EventsTableComponent {
       }]
     },
     columns: {
+
       title: {
         title: 'Título'
       },
