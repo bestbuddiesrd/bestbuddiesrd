@@ -25,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from "./register/register.component";
 import { CalendarModule } from 'angular-calendar';
 import { LandingComponent } from "./landing/landing.component";
+import { MatDialogModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { LandingComponent } from "./landing/landing.component";
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     ReactiveFormsModule,
+    MatDialogModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     RouterModule.forRoot(AppRoutes)

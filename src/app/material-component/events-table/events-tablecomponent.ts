@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { CalendarService } from '../../services/calendar/calendar.service';
 import { Subject } from 'rxjs';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material';
+import { ReportsComponent } from '../reports/reports.component';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'advanced-example-server',
@@ -9,13 +16,14 @@ import * as moment from 'moment';
     <ng2-smart-table [settings]="settings" [source]="eventos" (custom)="goToReport($event)" ></ng2-smart-table>
   `
 })
+
 export class EventsTableComponent {
   eventsList: any;
   events: any[] = [];
   eventos: any[];
   refresh: Subject<any> = new Subject();
 
-  constructor(private calendarService: CalendarService) { }
+  constructor(private calendarService: CalendarService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.calendarService.getEvents("http://bestbuddies.hajconsulting.net/Service/Service.asmx/GetExpiredEvents")
@@ -65,7 +73,16 @@ export class EventsTableComponent {
   };
 
   goToReport(info) {
-    console.log(info.data.id);
+    const dialogRef = this.dialog.open(ReportsComponent, {
+      data: { title: info.data.title, eventId: info.data.id },
+      width: "700px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+    console.log(info.data);
   }
 
   parseJsonDate(jsonDateString) {
