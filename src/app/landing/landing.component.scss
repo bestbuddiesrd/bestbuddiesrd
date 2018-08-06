@@ -1,0 +1,41 @@
+// .container {
+//     height: 100vh;
+// }
+header {
+    height: 100vh;
+    background-image: url("assets/images/landing.jpg");
+    background-size: cover;
+    background-position: center;
+    // margin-top: 2.5%;
+    //margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+p {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2.6%;
+}
+
+a {
+    color: white;
+    border-bottom: 1px solid white;
+    padding-bottom: 1.5px;
+}
+
+mat-toolbar {
+    position: fixed;
+    background-color: transparent !important;
+    color: white;
+    box-shadow: none !important;
+
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}

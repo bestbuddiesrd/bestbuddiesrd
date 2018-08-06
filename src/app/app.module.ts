@@ -15,7 +15,6 @@ import { AppSidebarComponent } from "./layouts/full/sidebar/sidebar.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DemoMaterialModule } from "./demo-material-module";
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { SharedModule } from "./shared/shared.module";
 import { SpinnerComponent } from "./shared/spinner.component";
@@ -25,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { RegisterComponent } from "./register/register.component";
 import { CalendarModule } from 'angular-calendar';
-
+import { LandingComponent } from "./landing/landing.component";
+import { MatDialogModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { CalendarModule } from 'angular-calendar';
     SpinnerComponent,
     AppSidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +49,7 @@ import { CalendarModule } from 'angular-calendar';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     ReactiveFormsModule,
+    MatDialogModule,
     NgbModule.forRoot(),
     CalendarModule.forRoot(),
     RouterModule.forRoot(AppRoutes)

@@ -1,0 +1,15 @@
+<mat-card-content>
+    <mat-toolbar color="primary">{{data.title}}</mat-toolbar>
+    <br>
+    <h4>Participantes</h4>
+    Cantidad:
+    <mat-slider #slidey color="primary" value="0"></mat-slider>
+    {{slidey.value}}
+
+    <mat-form-field>
+        <textarea matInput #review placeholder="Descripción de la actividad..." required></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="postReport(data, slidey.value, review.value)">Enviar reporte</button>
+
+</mat-card-content>

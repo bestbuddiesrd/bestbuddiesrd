@@ -16,6 +16,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { GridComponent } from './grid/grid.component';
 import { ListsComponent } from './lists/lists.component';
 import { MenuComponent } from './menu/menu.component';
+import { ReportsComponent } from './reports/reports.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { ExpansionComponent } from './expansion/expansion.component';
@@ -63,7 +64,8 @@ registerLocaleData(localeEs);
 
   ],
   entryComponents: [
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ReportsComponent
   ],
   declarations: [
     ActividadesComponent,
@@ -85,7 +87,8 @@ registerLocaleData(localeEs);
     SliderComponent,
     SlideToggleComponent,
     CalendarComponent,
-    EventsTableComponent
+    EventsTableComponent,
+    ReportsComponent
   ]
 })
 
